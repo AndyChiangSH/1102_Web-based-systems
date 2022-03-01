@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="container-fluid" style="padding-top: 20px;">
+        {% include 'header.html' %}
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>MENU</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="/" class="list-group-item">HOME</a>
+                            <a href="https://www.nchu.edu.tw/index1.php" class="list-group-item" target="_blank">NCHU</a>
+                            <a href="http://www.cs.nchu.edu.tw/v4/" class="list-group-item" target="_blank">NCHU CSE</a>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <a href="https://info.flagcounter.com/NAh6"><img src="https://s05.flagcounter.com/count2/NAh6/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {% block heading %}{% endblock %}
+                    </div>
+                    <div class="panel-body">
+                        {% block content %}{% endblock %}
+                    </div>
+                    <div class="panel-footer">
+                        {% include 'footer.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

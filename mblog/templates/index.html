@@ -1,26 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mblog</title>
-</head>
-<body>
-    <h1>歡迎光臨我的部落格！</h1>
-    <hr>
+{% extends 'base.html' %}
+
+{% block title %}歡迎光臨我的部落格！{% endblock %}
+{% block heading %}
+    <h3 style="font-family: 微軟正黑體;">本站文章列表</h3>
+{% endblock %}
+{% block content %}
     {% for post in posts %}
-    <p style="font-family: 微軟正黑體; font-size: 16px; font-weight: bold;">
-        {{ post.title }}
-    </p>
-    <p style="font-family: 微軟正黑體; font-size: 10px; letter-spacing: 1px;">
-        {{ post.body }}
-    </p>
-    <p style="font-family: 微軟正黑體; font-size: 8px; color: blue">
-        更新時間：{{ post.pub_date }}
-    </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p style="font-family: 微軟正黑體; font-size: 18px; font-weight: bold;">
+                    <a href="/post/{{ post.slug }}">{{ post.title }}</a>
+                </p>
+            </div>
+            <div class="panel-body">
+                <p style="font-family: 微軟正黑體;">
+                    {{ post.body | truncatechars:15 }}
+                </p>
+            </div>
+            <div class="panel-footer">
+                <p style="font-family: 微軟正黑體;">
+                    {{ post.pub_date | date:"Y M d, h:m:s" }}
+                </p>
+            </div>
+        </div>
     {% endfor %}
-    <hr>
-    <h3>現在時刻：{{ now }}</h3>
-</body>
-</html>
+{% endblock %}
