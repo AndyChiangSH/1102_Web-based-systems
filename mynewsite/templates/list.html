@@ -5,10 +5,20 @@
     <title>Mobile Phones</title>
 </head>
 <body>
-    <h2>List of mobile phones</h2>
+    <h2>List of mobile phones ({{ date }})</h2>
     <hr>
-    <table>
-        {}
+    {% if products %}
+    <table width=400 border=1 bgcolor='#ccffcc'>
+        <tr><td>item number</td><td>brand name</td><td>price</td><td>size</td></tr>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.sku }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.get_size_display }}</td>
+        </tr>
+        {% endfor %}
     </table>
+    {% endif %}
 </body>
-</html>
+</html>  

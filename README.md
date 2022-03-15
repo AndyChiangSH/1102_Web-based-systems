@@ -6,3 +6,4 @@
 * hw01 - mblog posts
 * hw02 - mblog slug & boostrap & image
 * hw03 - mblog image & markdown + mynewsite models & views
+* hw04 - mynewsite urls

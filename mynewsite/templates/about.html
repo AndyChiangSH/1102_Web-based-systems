@@ -8,7 +8,10 @@
     <h2>School</h2>
     <hr>
     <p>
-        Hi, I am Andy.
+        Hi, here is Author {{ author_no }}'s about page.
     </p>
+    <i>{{ quote }}</i>
+    <br>
+    <a href="{% url 'home-url' %}">Back to home</a>
 </body>
 </html>

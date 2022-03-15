@@ -1,58 +1,33 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Product
+import random
 
 
 # Create your views here.
-def about(request):
-    html = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About me</title>
-</head>
-<body>
-    <h2>School</h2>
-    <hr>
-    <p>
-        Hi, I am Andy.
-    </p>
-</body>
-</html>    
-"""
-
-    return HttpResponse(html)
+def index(request):
+    return render(request, "index.html")
 
 
-def listing(request):
-    html = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mobile Phones</title>
-</head>
-<body>
-    <h2>List of mobile phones</h2>
-    <hr>
-    <table width=400 border=1 bgcolor='#ccffcc'>
-        {}
-    </table>
-</body>
-</html>   
-"""
-    SIZES = {
-        "S": "Small",
-        "M": "Medium",
-        "L": "Large",
-    }
+def about(request, author_no=0):
+    author_no = author_no
+    quotes = ["AAA", "BBB", "CCC", "DDD", "EEE"]
+    quote = random.choice(quotes)
+
+    return render(request, "about.html", locals())
+
+
+def listing(request, year=0, month=0, day=0):
     products = Product.objects.all()
-    tags = "<tr><td>item number</td><td>brand name</td><td>price</td><td>size</td></tr>"
-    for p in products:
-        tags += f"<tr><td>{p.sku}</td>"
-        tags += f"<td>{p.name}</td>"
-        tags += f"<td>{p.price}</td>"
-        tags += f"<td>{SIZES[p.size]}</td></tr>"
+    date = f"{year}/{month}/{day}"
 
-    return HttpResponse(html.format(tags))
+    return render(request, "list.html", locals())
+
+
+def display_detail(request, sku):
+    try:
+        p = Product.objects.get(sku=sku)
+    except Product.DoesNotExist:
+        raise Http404("Product not found.")
+
+    return render(request, "detail.html", locals())
