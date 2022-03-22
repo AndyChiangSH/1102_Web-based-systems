@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from mysite.views import about, listing, display_detail, index
+from mysite.views import about, listing, display_detail, index, engtv, carlist, musics
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,11 @@ urlpatterns = [
     path('list/', listing),
     path('list/<str:sku>', display_detail),
     path('list/<int:year>/<int:month>/<int:day>', listing, name="list-url"),
+    path('<int:tvno>/', index, name="tv-url"),
+    path('engtv/', engtv),
+    path('engtv/<int:tvno>/', engtv, name="engtv-url"),
+    path('carlist/', carlist),
+    path('carlist/<int:maker>/', carlist, name="carlist-url"),
+    path('musics/', musics),
+    path('musics/<int:musicno>/', musics, name="musics-url"),
 ]

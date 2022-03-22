@@ -2,11 +2,62 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from .models import Product
 import random
+from datetime import datetime
 
 
 # Create your views here.
-def index(request):
-    return render(request, "index.html")
+def index(request, tvno=0):
+    tv_list = [
+        {"name": "公視", "tvcode": "4Uc00FPs27M"},
+        {"name": "華視", "tvcode": "wM0g8EoUZ_E"},
+        {"name": "寰宇", "tvcode": "B7Zp3d6xXWw"},
+        {"name": "台視", "tvcode": "xL0ch83RAK8"},
+    ]
+    now = datetime.now()
+    hour = now.timetuple().tm_hour
+    tv = tv_list[tvno]
+
+    return render(request, "index.html", {"tv": tv, "now": now, "hour": hour})
+
+
+def engtv(request, tvno=0):
+    tv_list = [
+        {"name": "Sky News", "tvcode": "Ns3JgHODbI4"},
+        {"name": "Euro News", "tvcode": "sPgqEHsONK8"},
+        {"name": "India News", "tvcode": "zLD7bC0u5ms"},
+    ]
+    now = datetime.now()
+    tv = tv_list[tvno]
+
+    return render(request, "engtv.html", {"tv": tv, "now": now})
+
+
+def carlist(request, maker=0):
+    car_maker = ['SAAB', 'Ford', 'Honda', 'Mazda', 'Nissan','Toyota']
+    car_list = [
+        [],
+        ['Fiesta', 'Focus', 'Modeo', 'EcoSport', 'Kuga', 'Mustang'],
+        ['Fit', 'Odyssey', 'CR-V', 'City', 'NSX'],
+        ['Mazda3', 'Mazda5', 'Mazda6', 'CX-3', 'CX-5', 'MX-5'],
+        ['Tida', 'March', 'Livina', 'Sentra', 'Teana', 'X-Trail', 'Juke', 'Murano'],
+        ['Camry','Altis','Yaris','86','Prius','Vios', 'RAV4', 'Wish']
+    ]
+    maker_name = car_maker[maker]
+    cars = car_list[maker]
+
+    return render(request, "carlist.html", locals())
+
+
+def musics(request, musicno=0):
+    musics = [
+        {"name": "Lofi", "code": "5qap5aO4i9A"},
+        {"name": "Jazz", "code": "b4y_sdzwPzI"},
+        {"name": "Remix", "code": "Fn7YH_eiJ0c"},
+    ]
+    now = datetime.now()
+    music = musics[musicno]
+
+    return render(request, "musics.html", locals())
 
 
 def about(request, author_no=0):

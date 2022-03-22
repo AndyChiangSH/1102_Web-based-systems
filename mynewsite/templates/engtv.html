@@ -5,21 +5,14 @@
 {% block menu %}
 <ul class="nav navbar-nav">
     <li class="active"><a href="/">HOME</a></li>
-    <li><a href="{% url 'tv-url' 0 %}">公視</a></li>
-    <li><a href="{% url 'tv-url' 1 %}">華視</a></li>
-    <li><a href="{% url 'tv-url' 2 %}">寰宇</a></li>
-    <li><a href="{% url 'tv-url' 3 %}">台視</a></li>
+    <li><a href="{% url 'engtv-url' 0 %}">Sky News</a></li>
+    <li><a href="{% url 'engtv-url' 1 %}">Euro News</a></li>
+    <li><a href="{% url 'engtv-url' 2 %}">India News</a></li>
 </ul>
 {% endblock %}
 {% block content %}
 <div class="container">
     <div id="tvcode" class="center">
-        {% if hour > 18 %}
-        Good Night!
-        {% else %}
-        Good Morning!
-        {% endif %}
-        <br>
         <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{ tv.tvcode }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
