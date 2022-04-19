@@ -1,0 +1,37 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}中古手機賣場{% endblock %}
+{% block content %}
+<div class="container" align="center">
+    {% if products %}
+        <table>
+            <thead>
+                <tr bgcolor="#cccccc">
+                    <td width="250">手機</td>
+                    <td width="150">廠商/型號</td>
+                    <td width="50">發行年</td>
+                    <td>價格</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in products %}
+                <tr bgcolor="{% cycle '#ffb8b8' '#fffeb8' %}">
+                    <td width="250"><a href="{% url 'detail-url' p.id %}">{{ p.nickname }}</a></td>
+                    <td width="150">
+                        {% if p.pmodel %}
+                        {{ p.pmodel.maker.name }}/{{ p.pmodel.name }}
+                        {% else %}
+                        該機型已停產
+                        {% endif %}
+                    </td>
+                    <td width="50">{{ p.year }}</td>
+                    <td>{{ p.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <h3>無存貨！</h3>
+    {% endif %}
+</div>
+{% endblock %}

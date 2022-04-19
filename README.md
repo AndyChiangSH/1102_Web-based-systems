@@ -8,3 +8,4 @@
 * hw03 - mblog image & markdown + mynewsite models & views
 * hw04 - mynewsite urls
 * hw05 - mynewsite templates
+* hw06 - mynewsite models + mobile market

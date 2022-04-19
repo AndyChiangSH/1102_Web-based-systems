@@ -1,0 +1,6 @@
+{% extends 'mobile/base.html' %}
+
+{% block title %}{{ product.nickname | default:"無" }}{% endblock %}
+{% block content %}
+<h2>{{ product.nickname | default:"無" }}</h2>
+{% endblock %}

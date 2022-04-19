@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from mysite.views import about, listing, display_detail, index, engtv, carlist, musics
+import mobilemarket.views as mobile
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +34,6 @@ urlpatterns = [
     path('carlist/<int:maker>/', carlist, name="carlist-url"),
     path('musics/', musics),
     path('musics/<int:musicno>/', musics, name="musics-url"),
+    path('mobile/', mobile.index),
+    path('mobile/detail/<int:id>', mobile.detail, name="detail-url"),
 ]

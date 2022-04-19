@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +21,12 @@
     </table>
     {% if cars %}
     <table>
-        <tr><td>車廠</td><td>車款</td></tr>
+        <tr><td>車廠</td><td>車款</td><td>價錢</td></tr>
         {% for c in cars %}
         <tr bgcolor="{% cycle '#eeeeee' '#cccccc' %}">
             <td>{{ maker_name }}</td>
-            <td>{{ c }}</td>
+            <td>{{ c.model }}</td>
+            <td>NT$ {{ c.price | floatformat:2 | intcomma }}</td>
         </tr>
         {% endfor %}
     </table>
