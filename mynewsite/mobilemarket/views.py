@@ -13,8 +13,8 @@ def index(request):
 def detail(request, id):
     try:
         product = Product.objects.get(id=id)
-        image = PPhoto.objects.filter(product=product)
+        images = PPhoto.objects.filter(product=product)
     except:
         pass
 
-    return render(request, "mobile/detail.html", {"product": product, "image": image})
+    return render(request, "mobile/detail.html", locals())

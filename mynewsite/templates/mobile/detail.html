@@ -2,5 +2,23 @@
 
 {% block title %}{{ product.nickname | default:"無" }}{% endblock %}
 {% block content %}
-<h2>{{ product.nickname | default:"無" }}</h2>
+<div class="container" align="center">
+    {% if product %}
+    <table>
+        <tr><td align="center"><h3>{{ product.nickname }}</h3></td></tr>
+        <tr><td align="center">{{ product.description }}</td></tr>
+        <tr><td align="center">西元{{ product.year }}年出廠</td></tr>
+        <tr><td align="center">售價: NT${{ product.price }}元</td></tr>
+        <tr><td align="center">
+            {% for image in images %}
+            <img src="{{ image.url }}" width="350"><br>
+            {% empty %}
+            暫無圖片
+            {% endfor %}
+        </td></tr>
+    </table>
+    {% else %}
+    <h2>找不到指定的手機</h2>
+    {% endif %}
+</div>
 {% endblock %}

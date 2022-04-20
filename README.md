@@ -9,3 +9,4 @@
 * hw04 - mynewsite urls
 * hw05 - mynewsite templates
 * hw06 - mynewsite models + mobile market
+* hw07 - mysql + database router
