@@ -1,0 +1,68 @@
+{% extends 'board/base.html' %}
+
+{% block title %}瀏覽文章{% endblock %}
+{% block content %}
+<!-- <div class="container">
+    <form action="/board/" method="GET">
+        <label for="user_id">Your ID:</label>
+        <input type="text" name="user_id" id="user_id">
+        <label for="user_pass">Your password:</label>
+        <input type="text" name="user_pass" id="user_pass">
+        <label for="byear">出生年:</label>
+        <select name="byear" id="byear">
+            {% for year in years %}
+            <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="">喜歡的顏色（可複選）:</label>
+        <input type="checkbox" name="fcolor" id="fcolor" value="Red">Red
+        <input type="checkbox" name="fcolor" id="fcolor" value="Yellow">Yellow
+        <input type="checkbox" name="fcolor" id="fcolor" value="Green">Green
+        <input type="checkbox" name="fcolor" id="fcolor" value="Blue">Blue
+        <br>
+        <input type="submit" value="登入">
+        <input type="reset" value="清空">
+    </form>
+    <p>Your ID: {{ user_id }}</p>
+    {% if verified %}
+    <p>登入成功！</p>
+    {% else %}
+    <p>登入失敗！</p>
+    {% endif %}
+    <p>出生年: {{ byear }}</p>
+    <p>喜歡的顏色: 
+    {% if fcolor %}
+        {% for c in fcolor %}
+        {{ c }}, 
+        {% endfor %}
+    {% else %}
+    無
+    {% endif %}
+    </p>
+</div> -->
+<div class="container">
+    <h3>留言列表</h3>
+    <hr>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">「{{ post.nickname }}」覺得{{ post.mood }}</div>
+                <div class="panel-body">{{ post.message | linebreaks }}</div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <i><small>出生年: {{ post.byear }}</small></i>
+                        </div>
+                        <div class="col-md-6" align="right">
+                            <i><small>{{ post.pub_time }}</small></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

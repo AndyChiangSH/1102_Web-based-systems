@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mysite',
     'mobilemarket',
     'Homework7',
+    'board',
 ]
 
 MIDDLEWARE = [

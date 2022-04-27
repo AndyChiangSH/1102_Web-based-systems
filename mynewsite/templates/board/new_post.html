@@ -1,0 +1,31 @@
+{% extends 'board/base.html' %}
+
+{% block title %}新增文章{% endblock %}
+{% block content %}
+<div class="container">
+    {% if alert %}
+    <div class="alert alert-warning">{{ alert }}</div>
+    {% endif %}
+    <form action="/board/new" method="GET">
+        心情: 
+        {% for mood in moods %}
+        <input type="radio" name="mood" id="mood" value="{{ mood.status }}">{{ mood.status }}
+        {% endfor %}
+        <br>
+        留言板:<br>
+        <textarea name="message" id="message" cols="30" rows="3"></textarea><br>
+        <label for="nickname">你的暱稱:</label>
+        <input type="text" name="nickname" id="nickname"><br>
+        <label for="del_pass">張貼/刪除密碼:</label>
+        <input type="password" name="del_pass" id="del_pass"><br>
+        <label for="byear">出生年:</label>
+        <select name="byear" id="byear">
+            {% for year in years %}
+            <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="張貼">
+        <input type="reset" value="清空">
+    </form>
+</div>
+{% endblock %}
