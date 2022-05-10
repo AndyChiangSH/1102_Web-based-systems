@@ -11,11 +11,8 @@
 * hw06 - mynewsite models + mobile market
 * hw07 - mysql + database router
 * hw08 - form(GET)
-<<<<<<< HEAD
 * hw09 - form(POST) + model form + captcha
-=======
 
 ## Exam
 
 * midterm2
->>>>>>> 18b86415f56a7cfea1745adccf77c8a55994ecce
