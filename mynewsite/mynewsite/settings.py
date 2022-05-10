@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'mobilemarket',
     'Homework7',
     'board',
+    'captcha',
 ]
 
 MIDDLEWARE = [

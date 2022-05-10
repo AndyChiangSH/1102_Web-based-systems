@@ -42,8 +42,11 @@
     </p>
 </div> -->
 <div class="container">
-    <h3>留言列表</h3>
+    <h3 style="text-align: center;">留言列表</h3>
     <hr>
+    {% if message %}
+    <div class="alert alert-warning">{{ message }}</div>
+    {% endif %}
     <div class="row">
         {% for post in posts %}
         <div class="col-sm-12 col-md-6">
@@ -56,7 +59,8 @@
                             <i><small>出生年: {{ post.byear }}</small></i>
                         </div>
                         <div class="col-md-6" align="right">
-                            <i><small>{{ post.pub_time }}</small></i>
+                            <i><small>{{ post.pub_time }}</small></i> 
+                            <span class="glyphicon glyphicon-trash" onclick="go_delete({{ post.id }})"></span>
                         </div>
                     </div>
                 </div>
@@ -64,5 +68,20 @@
         </div>
         {% endfor %}
     </div>
+    <label for="del_pass">刪除密碼:</label>
+    <input type="password" name="del_pass" id="del_pass">
 </div>
+<script>
+    function go_delete(id) {
+        var user_pass = document.getElementById("del_pass").value;
+        console.log(user_pass);
+        if(user_pass != "") {
+            var url = "/board/" + id + "/" + user_pass;
+            window.location = url;
+        }
+        else {
+            alert("請填入刪除密碼！");
+        }
+    }
+</script>
 {% endblock %}

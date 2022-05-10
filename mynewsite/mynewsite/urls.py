@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from mysite.views import about, listing, display_detail, index, engtv, carlist, musics
 import mobilemarket.views as mobile
 import board.views as board
+from django.conf.urls import url
 
 
 urlpatterns = [
@@ -38,5 +39,9 @@ urlpatterns = [
     path('mobile/', mobile.index),
     path('mobile/detail/<int:id>', mobile.detail, name="detail-url"),
     path('board/', board.index),
-    path('board/new', board.new_post),
+    path('board/<int:pid>/<str:del_pass>', board.index),
+    path('board/posting', board.posting),
+    path('board/listing', board.listing),
+    path('board/contact', board.contact),
+    url(r'^captcha/', include('captcha.urls')),
 ]

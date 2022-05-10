@@ -1,0 +1,29 @@
+{% extends 'board/base.html' %}
+
+{% block title %}瀏覽文章{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 style="text-align: center;">留言列表</h3>
+    <hr>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-sm-12 col-md-4">
+            <div class="panel {% cycle 'panel-primary' 'panel-info' 'panel-warning' 'panel-success' %}">
+                <div class="panel-heading">「{{ post.nickname }}」覺得{{ post.mood }}</div>
+                <div class="panel-body">{{ post.message | linebreaks }}</div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <i><small>出生年: {{ post.byear }}</small></i>
+                        </div>
+                        <div class="col-md-6" align="right">
+                            <i><small>{{ post.pub_time }}</small></i> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

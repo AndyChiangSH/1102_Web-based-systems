@@ -21,3 +21,20 @@ class Post(models.Model):
 
     def __str__(self):
         return self.message
+
+
+class Contact(models.Model):
+    CITYS = [
+        ["TP", "Taipei"],
+        ["TC", "TaiChung"],
+        ["TN", "Tainan"],
+        ["O", "Others"],
+    ]
+    name = models.CharField(max_length=50, default="匿名")
+    city = models.CharField(max_length=50, choices=CITYS)
+    school = models.BooleanField(default=False)
+    email = models.EmailField()
+    message = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
