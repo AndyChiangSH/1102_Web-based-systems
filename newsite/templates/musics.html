@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Music Live{% endblock %}
+{% block tvname %}{{ music.name }}{% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    {% for m in musics %}
+    <li><a href="{% url 'musics-url' forloop.counter0 %}">{{ m.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div id="tvcode" class="center">
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{ music.code }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+{% endblock %}

@@ -3,15 +3,16 @@
 
 ## Homework
 
-* hw01 - mblog posts
-* hw02 - mblog slug & boostrap & image
-* hw03 - mblog image & markdown + mynewsite models & views
-* hw04 - mynewsite urls
-* hw05 - mynewsite templates
-* hw06 - mynewsite models + mobile market
-* hw07 - mysql + database router
-* hw08 - form(GET)
-* hw09 - form(POST) + model form + captcha
+* week01 - mblog posts
+* week02 - mblog slug & boostrap & image
+* week03 - mblog image & markdown + mynewsite models & views
+* week04 - mynewsite urls
+* week05 - mynewsite templates
+* week06 - mynewsite models + mobile market
+* week07 - mysql + database router
+* week08 - form(GET)
+* week09 - form(POST) + model form + captcha
+* week10 - copy project + cookies & session
 
 ## Exam
 
