@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}登入{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2 style="text-align: center;">User Login</h2>
+	</div>
+	<div class="panel-body">
+		<form action="" method="POST">
+			{% csrf_token %}
+
+			{{ form.as_p }}
+
+			<input type="submit" value="submit" class="btn btn-success">
+			<input type="reset" value="clear" class="btn btn-warning">
+		</form>
+	</div>
+	<div class="panel-footer">
+		尚未註冊？請先來<a href="/signup/">這裡</a>
+	</div>
+</div>
+<!-- {% if message %}
+<div class="alert alert-warning">{{ message }}</div>
+{% endif %} -->
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+{% endblock %}

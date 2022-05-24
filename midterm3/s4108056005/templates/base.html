@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}" >
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	<div class="container-fluid" style="width: 80%">
+		{% include 'header.html' %}
+
+		<div class="row">
+			<div class="col-12 col-sm-4">
+				<div class="panel panel-default" style="text-align: center;">
+					<div class="panel-heading">
+						<h2>MENU</h2>
+					</div>
+					<div class="panel-body">
+						<div class="list-group">
+							<div class="list-group-item"><a href="{% url 'index-url' 'Rice' %}">Rice</a></div>
+							<div class="list-group-item"><a href="{% url 'index-url' 'Noodles' %}">Noodles</a></div>
+							<div class="list-group-item"><a href="{% url 'index-url' 'Dumpling' %}">Dumpling</a></div>
+							<div class="list-group-item"><a href="{% url 'index-url' 'dishes' %}">dishes</a></div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						{% if user_name %}
+						<a href="/info" class="btn btn-warning">使用者資料</a>
+						<a href="/logout" class="btn btn-danger">登出</a>
+						{% else %}
+						<a href="/login" class="btn btn-primary">登入</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-8">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+
+		{% include 'footer.html' %}
+	</div>
+</body>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Write a Post{% endblock %}
+{% block content %}
+{% if success %}
+<div class="alert alert-warning">新增成功！</div>
+{% else %}
+<div class="alert alert-warning">每個欄位都必填</div>
+{% endif %}
+<form action="" method="GET">
+	<label for="nickname">Nickname: </label>
+	<input id="nickname" type="text" name="nickname">
+	<br>
+	<label for="type">Type: </label>
+	<input id="type" type="radio" name="type" value="T">Taiwanese
+	<input id="type" type="radio" name="type" value="J">Japanese
+	<input id="type" type="radio" name="type" value="K">Korean
+	<input id="type" type="radio" name="type" value="E">European
+	<br>
+	<label for="store_name">Store name: </label>
+	<input id="store_name" type="text" name="store_name">
+	<br>
+	<label for="like">Like or Dislike? </label>
+	<input id="like" type="radio" name="like" value="T">Like
+	<input id="like" type="radio" name="like" value="D">DisLike
+	<br>
+	<label for="content">Content: </label><br>
+	<textarea id="content" name="content"></textarea>
+	<br>
+	<input type="submit" value="Submit">
+	<input type="reset" value="Clear">
+</form>
+{% endblock %}
