@@ -13,6 +13,7 @@
 * week08 - form(GET)
 * week09 - form(POST) + model form + captcha
 * week10 - copy project + cookies & session
+* week11 - django auth + email activation
 
 ## Exam
 

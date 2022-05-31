@@ -15,7 +15,25 @@
             </div>
         </div>
     </div>
-    <p>姓名：{{ username }}</p>
-    <p>電子郵件：{{ useremail }}</p>
+    <div style="width: 100%;">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                {{ profile.user.username|upper }}
+            </div>
+            <div class="panel-body">
+                電子郵件：{{ profile.user.email }}<br>
+                身高：{{ profile.height }}<br>
+                性別：{{ profile.male|yesno:"男性,女性" }}<br>
+                網站：{{ profile.website }}<br>
+            </div>
+        </div>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="更新個人資料">
+    </form>
 </div>
 {% endblock %}

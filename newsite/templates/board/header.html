@@ -7,13 +7,14 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="/board">首頁</a></li>
-            {% if username %}
+            {% if user.is_authenticated %}
             <li><a href="/board/userinfo">個人資料</a></li>
             <li><a href="/board/logout">登出</a></li>
-            <li><a href="/board/post">寫日記</a></li>
+            <li><a href="/board/posting">寫日記</a></li>
             <li><a href="/board/admin">後台管理</a></li>
             {% else %}
             <li><a href="/board/login">登入</a></li>
+            <li><a href="/accounts/register">註冊</a></li>
             {% endif %}
             <li><a href="/board/contact">聯絡管理員</a></li>
         </ul>

@@ -10,13 +10,36 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading" align="center">
+                    {% if user.is_authenticated %}
+                    <h3>{{ user.username }}</h3>
+                    {% else %}
                     <h3>我的私人日記</h3>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
     </div>
-    {% if username %}
-    歡迎，{{ username }}！
+    {% if user.is_authenticated %}
+    <div class="row">
+        {% for diary in diaries %}
+        <div class="col-sm-4 m-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    {{ diary.ddate }}
+                </div>
+                <div class="panel-body">
+                    {{ diary.note|linebreaks }}
+                </div>
+                <div class="panel-footer">
+                    今日花費：{{ diary.budget }}元，體重：{{ diary.weight }}kg
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h3 class="text-danger">請先登入</h3>
     {% endif %}
 </div>
 {% endblock %}

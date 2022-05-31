@@ -1,6 +1,5 @@
-from cgitb import enable
-from pyexpat import model
 from django.db import models
+from django.contrib import auth
 
 # Create your models here.
 class Mood(models.Model):
@@ -48,3 +47,24 @@ class User(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(auth.models.User, on_delete=models.CASCADE)
+    height = models.PositiveIntegerField(default=160)
+    male = models.BooleanField(default=False)
+    website = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Diary(models.Model):
+    user = models.ForeignKey(auth.models.User, on_delete=models.CASCADE)
+    budget = models.IntegerField(default=0)
+    weight = models.FloatField(default=0)
+    note = models.TextField()
+    ddate = models.DateField()
+
+    def __str__(self):
+        return f"{self.ddate} ({self.user})"

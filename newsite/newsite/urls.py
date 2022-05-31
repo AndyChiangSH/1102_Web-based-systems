@@ -47,4 +47,5 @@ urlpatterns = [
     path('board/login', board.login),
     path('board/logout', board.logout),
     path('board/userinfo', board.userinfo),
+    path('accounts/', include('registration.backends.default.urls')),
 ]
