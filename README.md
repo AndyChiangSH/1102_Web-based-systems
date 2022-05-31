@@ -1,5 +1,6 @@
 # 1102_Web-based-systems
-> 110年下學期_網際網路系統設計（資管系）
+
+110年下學期_網際網路系統設計（資管系）
 
 ## Homework
 
@@ -17,4 +18,5 @@
 
 ## Exam
 
-* midterm2
+* midterm2 - 第二次期中考
+* midterm3 - 第三次期中考

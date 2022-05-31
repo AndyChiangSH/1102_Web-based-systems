@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Recomendation{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 style="text-align: center;">Type</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group">
+					{% for type in types %}
+					<a class="list-group-item" href="/recommend/{{ type.id }}">{{ type.type_name }}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8">
+		{% if store %}
+		<h3 style="text-align: center;">{{ store }}</h3>
+		{% if foods %}
+		<table class="table">
+			<thead>
+				<td>Food</td>
+				<td>Price</td>
+			</thead>
+			<tbody>
+				{% for food in foods %}
+				<tr>
+					<td>{{ food.food_name }}</td>
+					<td>{{ food.price }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>No foods</p>
+		{% endif %}
+		<a href="/recommend/{{ type.id }}">Return</a>
+		{% else %}
+		<h3 style="text-align: center;">{{ type }}</h3>
+		{% if stores %}
+		<table class="table">
+			<thead>
+				<td>Store</td>
+				<td>Price</td>
+				<td>Rating</td>
+				<td>Position</td>
+			</thead>
+			<tbody>
+				{% for store in stores %}
+				<tr>
+					<td><a href="/recommend/{{ type.id }}/{{ store.id }}">{{ store.store_name }}</a></td>
+					<td>{{ store.avg_price }}</td>
+					<td>{{ store.rating }}</td>
+					<td>{{ store.position }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>No stores</p>
+		{% endif %}
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

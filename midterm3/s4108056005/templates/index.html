@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}餐廳菜單 | {{ cate }}{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2 style="text-align: center;">{{ cate }}</h2>
+	</div>
+	<div class="panel-body">
+		{% if items %}
+		<table class="table" style="text-align: center;">
+			<thead>
+				<tr style="background-color: #eeeeee;">
+					<td style="font-weight: bold;">Name</td>
+					<td style="font-weight: bold;">Is_spicy</td>
+					<td style="font-weight: bold;">Price</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in items %}
+				<tr style="background-color: {% cycle '#ffffff' '#eeeeee' %}">
+					<td>{{ item.name }}</td>
+					<td>
+						{% if item.is_spicy %}
+						O
+						{% else %}
+						X
+						{% endif %}
+					</td>
+					<td>{{ item.price }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p style="text-align: center; color: red;">{{ cate }} 無餐點</p>
+		{% endif %}
+	</div>
+</div>
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Show Posts{% endblock %}
+{% block content %}
+<div class="row">
+	{% for post in posts %}
+	<div class="col-sm-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-sm-6" style="text-align: left;">{{ post.nickname }}</div>
+					<div class="col-sm-6" style="text-align: right;">
+					{% if post.like %}
+					Like
+					{% else %}
+					Dislike
+					{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>type: 
+					{% if post.type == 'T' %}
+					Taiwanese
+					{% elif post.type == 'J' %}
+					Japanese
+					{% elif post.type == 'K' %}
+					Korean
+					{% elif post.type == 'E' %}
+					European
+					{% endif %}
+				</p>
+				<p>store name: {{ post.store_name }}</p>
+				<p>{{ post.content | truncatechars:15 }}</p>
+			</div>
+			<div class="panel-footer" style="text-align: right;">
+				<small><i>{{ post.pub_time }}</i></small>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
